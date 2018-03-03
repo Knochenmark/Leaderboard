@@ -36,12 +36,24 @@ body
       text-align: center
     .camper-table-camper
       flex 1
-    .camper-table-last-30
+    .camper-table-recent
       flex 1
       text-align: center
-    .camper-table-all-time
+      color lightgrey
+      &.active
+        color white
+      &:hover
+        cursor pointer
+        color #b4ffa2
+    .camper-table-alltime
       flex 1
       text-align: center
+      color lightgrey
+      &.active
+        color white
+      &:hover
+        cursor pointer
+        color #b4ffa2
   .camper-table-users
     display: flex
     flex-direction: column
@@ -72,10 +84,10 @@ body
           border: 2px solid $fccGreen;
           border-radius: 0.25rem;
           margin-right: 0.5rem;
-      .camper-row-last-30
+      .camper-row-recent
         flex 1
         text-align: center
-      .camper-row-all-time
+      .camper-row-alltime
         flex 1
         text-align: center
 

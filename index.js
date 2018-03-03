@@ -37,7 +37,11 @@ class Leaderboard extends React.Component {
   componentDidMount() {
     this.getData();
   }
-
+  setColumn(column) {
+    if (column !== this.state.column) {
+       this.setState({column: column}, this.getData);
+    }
+  }
 
   render() {
     let users = this.state[this.state.column];
@@ -46,7 +50,7 @@ class Leaderboard extends React.Component {
       <div className='header'>
         <h1>{this.props.title}</h1>
       </div>
-      <CamperTable users = {users} />
+      <CamperTable users = {users} column = {this.state.column} setColumn={this.setColumn.bind(this)}/>
       <div className='made-by'>
         {footerText}
         <a href='https://github.com/Knochenmark'>Knochenmark</a>
@@ -64,6 +68,8 @@ class CamperTable extends React.Component {
     });
 
     let selected = this.props.column;
+    let recentClass = 'camper-table-recent sortable ' +  (this.props.column=== 'recent' ? 'active' : '');
+    let alltimeClass = 'camper-table-alltime sortable ' +  (this.props.column=== 'alltime' ? 'active' : '');
 
     return <div className='camper-table'>
     <div className='camper-table-header'>
@@ -73,10 +79,10 @@ class CamperTable extends React.Component {
       <div className='camper-table-camper'>
         Camper
       </div>
-      <div className='camper-table-last-30'>
+      <div className={recentClass} onClick={this.columnSortHandler.bind(this, "recent")}>
         Points of last 30 days
       </div>
-      <div className='camper-table-all-time'>
+      <div className={alltimeClass} onClick={this.columnSortHandler.bind(this, "alltime")}>
         All time points
       </div>
   </div>
@@ -84,6 +90,11 @@ class CamperTable extends React.Component {
     {camperList}
   </div>
   </div>;
+  }
+  columnSortHandler(column, evt) {
+    if (!evt.target.classList.contains('active')) {
+      this.props.setColumn(column);
+    }
   }
 }
 
@@ -100,10 +111,10 @@ class CamperRow extends React.Component {
         {this.props.user.username}
       </a>
     </div>
-    <div className='camper-row-last-30'>
+    <div className='camper-row-recent'>
       {this.props.user.recent}
     </div>
-    <div className='camper-row-all-time'>
+    <div className='camper-row-alltime'>
       {this.props.user.alltime}
     </div>
   </div>;
