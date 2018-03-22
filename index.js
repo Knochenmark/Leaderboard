@@ -100,7 +100,7 @@ class CamperTable extends React.Component {
 
 class CamperRow extends React.Component {
   render() {
-    let link = 'https://www.freecodecamp.org' + this.props.user.username;
+    let link = 'https://www.freecodecamp.org/' + this.props.user.username;
     return <div className='camper-row-user'>
       <div className='camper-row-rank'>
         {this.props.rank}
