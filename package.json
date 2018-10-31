@@ -20,13 +20,14 @@
   },
   "homepage": "https://github.com/Knochenmark/Leaderboard#readme",
   "dependencies": {
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "parcel-bundler": "^1.10.2",
+    "parcel-bundler": "~1.10.3",
     "stylus": "^0.54.5"
   }
 }
